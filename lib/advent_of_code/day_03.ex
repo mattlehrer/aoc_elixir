@@ -1,10 +1,9 @@
 defmodule AdventOfCode.Day03 do
   def part1(input) do
     input
-    |> String.split("\n", trim: true)
-    |> Enum.map(&String.graphemes/1)
-    |> Enum.map(&move/1)
-    |> List.flatten()
+    |> String.trim()
+    |> String.graphemes()
+    |> move()
     |> Enum.uniq()
     |> Enum.count()
   end
