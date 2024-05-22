@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day06Test do
 
   import AdventOfCode.Day06
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = "turn on 0,0 through 999,999"
     result = part1(input)
@@ -35,11 +35,16 @@ defmodule AdventOfCode.Day06Test do
     assert result == 1_000_000 - 1_000 - 4
   end
 
-  @tag :skip
+  # @tag :skip
   test "part2" do
-    input = nil
+    input = "turn on 0,0 through 0,0"
     result = part2(input)
 
-    assert result
+    assert result == 1
+
+    input = "toggle 0,0 through 999,999"
+    result = part2(input)
+
+    assert result == 2_000_000
   end
 end
