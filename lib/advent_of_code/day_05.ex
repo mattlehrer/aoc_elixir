@@ -8,7 +8,12 @@ defmodule AdventOfCode.Day05 do
     |> Enum.count()
   end
 
-  def part2(_args) do
+  def part2(input) do
+    input
+    |> String.split("\n", trim: true)
+    |> Enum.filter(&two_pairs/1)
+    |> Enum.filter(&repeat_with_one_between/1)
+    |> Enum.count()
   end
 
   defp three_vowels(word) do
@@ -24,5 +29,13 @@ defmodule AdventOfCode.Day05 do
 
   defp disallowed_strings(word) do
     Regex.match?(~r/(ab|cd|pq|xy)/, word)
+  end
+
+  defp two_pairs(word) do
+    Regex.match?(~r/(..).*\1/, word)
+  end
+
+  defp repeat_with_one_between(word) do
+    Regex.match?(~r/(.).\1/, word)
   end
 end
