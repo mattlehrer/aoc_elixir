@@ -3,12 +3,17 @@ defmodule AdventOfCode.Day04Test do
 
   import AdventOfCode.Day04
 
-  @tag :skip
+  # @tag :skip
   test "part1" do
-    input = nil
+    input = "abcdef"
     result = part1(input)
 
-    assert result
+    assert result == 609_043
+
+    input = "pqrstuv"
+    result = part1(input)
+
+    assert result == 1_048_970
   end
 
   @tag :skip
