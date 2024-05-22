@@ -3,12 +3,22 @@ defmodule AdventOfCode.Day03Test do
 
   import AdventOfCode.Day03
 
-  @tag :skip
+  # @tag :skip
   test "part1" do
-    input = nil
+    input = ">"
     result = part1(input)
 
-    assert result
+    assert result == 2
+
+    input = "^>v<"
+    result = part1(input)
+
+    assert result == 4
+
+    input = "^v^v^v^v^v"
+    result = part1(input)
+
+    assert result == 2
   end
 
   @tag :skip

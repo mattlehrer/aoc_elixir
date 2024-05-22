@@ -16,7 +16,7 @@ defmodule AdventOfCode.Day02Test do
     assert result2 == 43
   end
 
-  # @tag :skip
+  @tag :skip
   test "part2" do
     input = "2x3x4"
     result = part2(input)
