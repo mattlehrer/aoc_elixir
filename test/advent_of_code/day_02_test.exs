@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day02Test do
 
   import AdventOfCode.Day02
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input1 = "2x3x4"
     result1 = part1(input1)
@@ -16,11 +16,16 @@ defmodule AdventOfCode.Day02Test do
     assert result2 == 43
   end
 
-  @tag :skip
+  # @tag :skip
   test "part2" do
-    input = nil
+    input = "2x3x4"
     result = part2(input)
 
-    assert result
+    assert result == 34
+
+    input = "1x1x10"
+    result = part2(input)
+
+    assert result == 14
   end
 end
