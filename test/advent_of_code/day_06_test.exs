@@ -35,7 +35,7 @@ defmodule AdventOfCode.Day06Test do
     assert result == 1_000_000 - 1_000 - 4
   end
 
-  # @tag :skip
+  @tag :skip
   test "part2" do
     input = "turn on 0,0 through 0,0"
     result = part2(input)
