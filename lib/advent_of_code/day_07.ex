@@ -6,7 +6,12 @@ defmodule AdventOfCode.Day07 do
     |> a_or_all()
   end
 
-  def part2(_args) do
+  def part2(input) do
+    input
+    |> String.split("\n", trim: true)
+    |> change_b_value()
+    |> reduce()
+    |> a_or_all()
   end
 
   defp a_or_all(%{"a" => a} = _map) do
@@ -139,5 +144,17 @@ defmodule AdventOfCode.Day07 do
           false
         end
     end
+  end
+
+  defp change_b_value(lines) do
+    Enum.map(lines, fn line ->
+      case String.split(line) do
+        [_, "->", "b"] ->
+          "956 -> b"
+
+        _ ->
+          line
+      end
+    end)
   end
 end
