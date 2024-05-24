@@ -3,12 +3,17 @@ defmodule AdventOfCode.Day09Test do
 
   import AdventOfCode.Day09
 
-  @tag :skip
+  # @tag :skip
   test "part1" do
-    input = nil
+    input = """
+    London to Dublin = 464
+    London to Belfast = 518
+    Dublin to Belfast = 141
+    """
+
     result = part1(input)
 
-    assert result
+    assert result == 605
   end
 
   @tag :skip
