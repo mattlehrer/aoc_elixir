@@ -1,44 +1,31 @@
 defmodule AdventOfCode.Day08 do
   def part1(input) do
     input
-    |> String.split(~r{(\r\n|\r|\n)}, trim: true)
-    |> count_chars
-    |> subtract_memory_usage
+    |> String.split("\n", trim: true)
+    |> Enum.map(&count_chars/1)
+    |> tap(&IO.inspect(&1, limit: :infinity))
+    |> tap(&IO.inspect(length(&1)))
+    |> Enum.sum()
   end
 
   def part2(_args) do
   end
 
-  defp count_chars(input) do
+  def count_chars(word) do
     count =
-      input
-      |> Enum.map(&String.length/1)
-      |> Enum.sum()
+      word
+      |> String.codepoints()
+      |> Enum.reduce(0, fn c, acc ->
+        cond do
+          c == "\"" -> acc + 2
+          c == "\\" -> acc + 2
+          c >= "a" && c <= "z" -> acc + 1
+          true -> acc + 4
+        end
+      end)
 
-    {input, count}
+    # IO.puts("#{inspect(word)}: #{inspect(count)}, #{inspect(String.length(word))}")
+
+    count - String.length(word)
   end
-
-  defp subtract_memory_usage({input, count}) do
-    usage =
-      input
-      |> Enum.map(&actual_length/1)
-      |> Enum.sum()
-
-    IO.puts("count: #{count}; usage: #{usage}")
-
-    count - usage
-  end
-
-  @esc_regex ~r/(\\\\|\\\"|\\x[\da-f]{2})/
-  @empty_regex ~r/\"/
-  def actual_length(line) do
-    line
-    |> unescape(@esc_regex, "*")
-    |> unescape(@empty_regex, "")
-    |> String.length()
-  end
-
-  @expansion_regex ~r/(\\|\")/
-  def expanded_length(line), do: 2 + String.length(unescape(line, @expansion_regex, "**"))
-  defp unescape(line, regex, replacement), do: Regex.replace(regex, line, replacement)
 end
