@@ -8,7 +8,13 @@ defmodule AdventOfCode.Day10 do
     |> String.length()
   end
 
-  def part2(_args) do
+  def part2(input) do
+    input
+    |> String.trim()
+    |> String.graphemes()
+    |> loop(50)
+    # |> tap(&IO.inspect/1)
+    |> String.length()
   end
 
   defp count_consecutive([], result), do: result
