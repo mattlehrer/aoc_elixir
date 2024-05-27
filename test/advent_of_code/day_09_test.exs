@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day09Test do
 
   import AdventOfCode.Day09
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = """
     London to Dublin = 464
