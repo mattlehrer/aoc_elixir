@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day13Test do
 
   import AdventOfCode.Day13
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = """
     Alice would gain 54 happiness units by sitting next to Bob.
