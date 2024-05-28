@@ -6,7 +6,12 @@ defmodule AdventOfCode.Day13 do
     |> find_max_change()
   end
 
-  def part2(_args) do
+  def part2(input) do
+    input
+    |> String.split("\n", trim: true)
+    |> to_map()
+    |> add_you()
+    |> find_max_change()
   end
 
   defp to_map(lines) do
@@ -66,5 +71,15 @@ defmodule AdventOfCode.Day13 do
 
   defp permute(list) do
     for elem <- list, rest <- permute(list -- [elem]), do: [elem | rest]
+  end
+
+  defp add_you(map) do
+    people = Map.keys(map)
+    map = Map.put(map, :you, %{})
+
+    Enum.reduce(people, map, fn person, acc ->
+      acc = Map.put(acc, person, Map.merge(Map.get(acc, person), %{:you => 0}))
+      Map.put(acc, :you, Map.merge(Map.get(acc, :you), %{person => 0}))
+    end)
   end
 end
