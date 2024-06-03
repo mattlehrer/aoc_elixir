@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day14Test do
 
   import AdventOfCode.Day14
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = """
     Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.
@@ -15,7 +15,7 @@ defmodule AdventOfCode.Day14Test do
     assert result == 1120
   end
 
-  # @tag :skip
+  @tag :skip
   test "part2" do
     input = """
     Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.

@@ -3,12 +3,16 @@ defmodule AdventOfCode.Day15Test do
 
   import AdventOfCode.Day15
 
-  @tag :skip
+  # @tag :skip
   test "part1" do
-    input = nil
+    input = """
+    Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
+    Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3
+    """
+
     result = part1(input)
 
-    assert result
+    assert result == 62_842_880
   end
 
   @tag :skip
