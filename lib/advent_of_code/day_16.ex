@@ -20,7 +20,12 @@ defmodule AdventOfCode.Day16 do
     |> elem(0)
   end
 
-  def part2(_args) do
+  def part2(input) do
+    input
+    |> String.split("\n", trim: true)
+    |> Enum.map(&parse_sue/1)
+    |> Enum.find(&is_real_sue/1)
+    |> elem(0)
   end
 
   def parse_sue(line) do
@@ -42,5 +47,17 @@ defmodule AdventOfCode.Day16 do
 
   def is_sue({_, properties}) do
     Enum.all?(properties, fn {key, value} -> Map.get(@ticker, key) == value end)
+  end
+
+  def is_real_sue({_, properties}) do
+    Enum.all?(properties, fn {key, value} ->
+      case key do
+        :cats -> Map.get(@ticker, key) < value
+        :trees -> Map.get(@ticker, key) < value
+        :pomeranians -> Map.get(@ticker, key) > value
+        :goldfish -> Map.get(@ticker, key) > value
+        _ -> Map.get(@ticker, key) == value
+      end
+    end)
   end
 end
