@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day15Test do
 
   import AdventOfCode.Day15
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = """
     Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
